@@ -2,6 +2,7 @@ package com.booleanuk.core;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
 public class BasketTest {
@@ -43,7 +44,8 @@ public class BasketTest {
     @Test
     void add_itemThatDoesntExistInInventory_cannotAdd() {
         Assertions.assertThrows(IllegalArgumentException.class,
-            () -> basket.add(new Bagel("BGLX"));
+            () -> basket.add(new Bagel("BGLX"))
+        );
     }
 
     // add item that exists - success

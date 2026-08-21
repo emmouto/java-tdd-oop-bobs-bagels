@@ -2,7 +2,7 @@ package com.booleanuk.core;
 
 import java.util.List;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
 public class BagelTest {
@@ -63,8 +63,8 @@ public class BagelTest {
     void removeFilling_noFillingExists_error() {
         onionBagel.removeFilling(baconFilling);
 
-        Assertions.assertThrows(IllegalArgumentException, 
-            () -> bagel.removeFilling(baconFilling));
+        Assertions.assertThrows(IllegalArgumentException.class, 
+            () -> onionBagel.removeFilling(baconFilling));
     }
 
     // remove filling
@@ -99,7 +99,7 @@ public class BagelTest {
     void getFullName_onionBagelWithEgg() {
         onionBagel.addFilling(eggFilling);
 
-        String expected = "Onion bagel with egg"
+        String expected = "Onion bagel with egg";
         String actual = onionBagel.getFullName();
 
         Assertions.assertEquals(expected, actual);
