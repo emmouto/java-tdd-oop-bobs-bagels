@@ -1,11 +1,12 @@
-package com.booleanuk.core;
+package com.booleanuk.core.model;
 
 public class Filling extends Item {
     public Filling(String SKU, double price, String variant) {
         super(SKU, price, "Filling", variant);
     }
 
-    public Filling(String SKU) {
-        this(SKU, 0.12, "test"); // TODO
+    @Override
+    public Filling createCopy() {
+        return new Filling(getSKU(), getPrice(), getVariant());
     }
 }

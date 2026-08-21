@@ -1,4 +1,4 @@
-package com.booleanuk.core;
+package com.booleanuk.core.model;
 
 public abstract class Item {
     private String SKU;
@@ -12,6 +12,8 @@ public abstract class Item {
         this.name = name;
         this.variant = variant;
     }
+
+    public abstract Item createCopy();
 
     public String getSKU() {
         return this.SKU;

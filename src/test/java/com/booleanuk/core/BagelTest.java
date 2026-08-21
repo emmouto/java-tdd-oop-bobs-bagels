@@ -3,6 +3,11 @@ package com.booleanuk.core;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+
+import com.booleanuk.core.inventory.Inventory;
+import com.booleanuk.core.model.Bagel;
+import com.booleanuk.core.model.Filling;
+
 import org.junit.jupiter.api.Assertions;
 
 public class BagelTest {
@@ -15,9 +20,9 @@ public class BagelTest {
         //onionBagel = new Bagel("BGLO", 0.49, "Onion");
         //eggFilling = new Filling("FILE", 0.12, "Egg");
         bobsInventory = new Inventory();
-        onionBagel = new Bagel("BGLO");
-        egg = new Filling("FILE");
-        bacon = new Filling("FILB");
+        onionBagel = new Bagel("BGLO", 0.49, "Onion");
+        egg = new Filling("FILE", 0.12, "Egg");
+        bacon = new Filling("FILB", 0.12, "Bacon");
     }
 
     @Test

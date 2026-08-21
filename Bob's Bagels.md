@@ -32,6 +32,9 @@
 ```mermaid
 classDiagram
 
+class BobsBagels {
+	- Inventory bobsInventory
+}
 
 class Basket {
 	- int capacity
@@ -82,9 +85,11 @@ class Role {
 	MANAGER
 }
 
+BobsBagels *-- Inventory : composition
+BobsBagels o-- Basket : uses
 Basket o-- Item : aggregation
 Bagel o-- Filling : aggregation
-Inventory o-- Item : aggregation
+Inventory o-- Item : contains
 Bagel <|-- Item : inheritance
 Filling <|-- Item : inheritance
 Coffee <|-- Item : inheritance

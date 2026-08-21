@@ -3,6 +3,14 @@ package com.booleanuk.core;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+
+import com.booleanuk.core.inventory.Inventory;
+import com.booleanuk.core.model.Bagel;
+import com.booleanuk.core.model.Basket;
+import com.booleanuk.core.model.Filling;
+import com.booleanuk.core.model.Item;
+import com.booleanuk.core.model.Role;
+
 import org.junit.jupiter.api.Assertions;
 
 public class BasketTest {

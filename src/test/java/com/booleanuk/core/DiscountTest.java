@@ -1,6 +1,13 @@
 package com.booleanuk.core;
 
 import org.junit.jupiter.api.Test;
+
+import com.booleanuk.core.inventory.Inventory;
+import com.booleanuk.core.model.Bagel;
+import com.booleanuk.core.model.Basket;
+import com.booleanuk.core.model.Coffee;
+import com.booleanuk.core.model.Filling;
+
 import org.junit.jupiter.api.Assertions;
 
 public class DiscountTest {

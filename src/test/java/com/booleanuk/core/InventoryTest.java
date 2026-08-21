@@ -1,6 +1,9 @@
 package com.booleanuk.core;
 
 import org.junit.jupiter.api.Test;
+
+import com.booleanuk.core.inventory.Inventory;
+
 import org.junit.jupiter.api.Assertions;
 
 public class InventoryTest {

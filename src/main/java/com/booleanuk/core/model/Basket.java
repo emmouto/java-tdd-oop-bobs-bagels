@@ -1,7 +1,9 @@
-package com.booleanuk.core;
+package com.booleanuk.core.model;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.booleanuk.core.inventory.Inventory;
 
 public class Basket {
     int capacity;
@@ -27,17 +29,11 @@ public class Basket {
     }
 
     public void add(Item item) {
-        if (bobsInventory.isAvailable(item.getSKU())) {
-            if (!isFull()) {
-            contents.add(item);
-            } else {
-            throw new IllegalStateException("Basket is full!");
-            }
+        if (!isFull()) {
+        contents.add(item);
         } else {
-            throw new IllegalArgumentException("Bob's Bagels does not stock that item.");
+        throw new IllegalStateException("Basket is full!");
         }
-
-        
     }
 
     public List<Item> getContents() {

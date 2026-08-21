@@ -1,4 +1,4 @@
-package com.booleanuk.core;
+package com.booleanuk.core.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,10 +9,6 @@ public class Bagel extends Item {
     public Bagel(String SKU, double price, String variant) {
         super(SKU, price, "Bagel", variant);
         fillings = new ArrayList<>();
-    }
-
-    public Bagel(String SKU) {
-        this(SKU, 1, "test"); // TODO
     }
 
     public List<Filling> getFillings() {
@@ -34,5 +30,10 @@ public class Bagel extends Item {
             totalCost += f.getPrice();
 
         return totalCost;
+    }
+
+    @Override
+    public Bagel createCopy() {
+        return new Bagel(getSKU(), getPrice(), getVariant());
     }
 }
