@@ -1,14 +1,11 @@
 package com.booleanuk.core;
 
-public class Filling {
-
-    public Filling(String string) {
-        //TODO Auto-generated constructor stub
+public class Filling extends Item {
+    public Filling(String SKU, double price, String variant) {
+        super(SKU, price, "Filling", variant);
     }
 
-    public Double getPrice() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getPrice'");
+    public Filling(String SKU) {
+        this(SKU, 1, "test"); // TODO
     }
-
 }

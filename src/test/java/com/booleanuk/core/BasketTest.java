@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
 public class BasketTest {
+    Inventory bobsInventory;
     Basket basket;
     Bagel onionBagel;
     Bagel plainBagel;
@@ -15,6 +16,7 @@ public class BasketTest {
     Filling bacon;
 
     BasketTest() {
+        bobsInventory = new Inventory();
         basket = new Basket(3);
         onionBagel = new Bagel("BGLO");
         plainBagel = new Bagel("BGLP");
@@ -27,7 +29,7 @@ public class BasketTest {
     // change capacity - manager - success
     @Test
     void changeCapacity_ifUserIsManager_success() {
-        basket.changeCapacity(5); // TODO role management
+        basket.changeCapacity(5, Role.MANAGER); // TODO role management
 
         Assertions.assertEquals(5, basket.getCapacity());
     }
@@ -36,7 +38,7 @@ public class BasketTest {
     @Test
     void changeCapacity_ifUserIsCustomer_success() {
         Assertions.assertThrows(IllegalArgumentException.class,
-            () -> basket.changeCapacity(5)
+            () -> basket.changeCapacity(5, Role.CUSTOMER)
         ); // TODO role management
     }
 

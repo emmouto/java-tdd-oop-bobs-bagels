@@ -1,57 +1,38 @@
 package com.booleanuk.core;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Bagel extends Item {
-    private String SKU;
-    private double price;
-    private String name;
-    private String variant;
+    List<Filling> fillings;
 
     public Bagel(String SKU, double price, String variant) {
-        this.SKU = SKU;
-        this.price = price;
-        this.name = "Bagel";
-        this.variant = variant;
+        super(SKU, price, "Bagel", variant);
+        fillings = new ArrayList<>();
     }
 
-    public Bagel(String string) {
-        //TODO Auto-generated constructor stub
+    public Bagel(String SKU) {
+        this(SKU, 1, "test"); // TODO
     }
 
     public List<Filling> getFillings() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getFillings'");
+        return fillings;
     }
 
-    public void addFilling(Filling eggFilling) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addFilling'");
+    public void addFilling(Filling filling) {
+        fillings.add(filling);
     }
 
-    public void removeFilling(Filling baconFilling) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'removeFilling'");
+    public void removeFilling(Filling filling) {
+        fillings.remove(filling);
     }
 
     public double getTotalCost() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getTotalCost'");
-    }
+        double totalCost = getPrice();
 
-    public String getFullName() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getFullName'");
-    }
+        for (Filling f : fillings)
+            totalCost += f.getPrice();
 
-    public Object getSKU() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getSKU'");
+        return totalCost;
     }
-
-    public Object getName() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getName'");
-    }
-
 }

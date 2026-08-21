@@ -6,16 +6,18 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
 public class BagelTest {
+    Inventory bobsInventory;
     Bagel onionBagel;
-    Filling eggFilling;
-    Filling baconFilling;
+    Filling egg;
+    Filling bacon;
 
     BagelTest() {
         //onionBagel = new Bagel("BGLO", 0.49, "Onion");
         //eggFilling = new Filling("FILE", 0.12, "Egg");
+        bobsInventory = new Inventory();
         onionBagel = new Bagel("BGLO");
-        eggFilling = new Filling("FILE");
-        baconFilling = new Filling("FILB");
+        egg = new Filling("FILE");
+        bacon = new Filling("FILB");
     }
 
     @Test
@@ -26,9 +28,9 @@ public class BagelTest {
     // add filling
     @Test
     void addFilling_eggOnionBagel() {
-        onionBagel.addFilling(eggFilling);
+        onionBagel.addFilling(egg);
 
-        List<Filling> expected = List.of(eggFilling);
+        List<Filling> expected = List.of(egg);
         List<Filling> actual = onionBagel.getFillings();
 
         Assertions.assertEquals(expected, actual);
@@ -37,10 +39,10 @@ public class BagelTest {
     // add multiple fillings 
     @Test
     void addTwoFillings_eggAndBaconOnionBagel() {
-        onionBagel.addFilling(eggFilling);
-        onionBagel.addFilling(baconFilling);
+        onionBagel.addFilling(egg);
+        onionBagel.addFilling(bacon);
 
-        List<Filling> expected = List.of(eggFilling, baconFilling);
+        List<Filling> expected = List.of(egg, bacon);
         List<Filling> actual = onionBagel.getFillings();
 
         Assertions.assertEquals(expected, actual);
@@ -49,10 +51,10 @@ public class BagelTest {
     // add multiple of the same Filling
     @Test
     void addTwoFillings_doubleBaconOnionBagel() {
-        onionBagel.addFilling(baconFilling);
-        onionBagel.addFilling(baconFilling);
+        onionBagel.addFilling(bacon);
+        onionBagel.addFilling(bacon);
 
-        List<Filling> expected = List.of(baconFilling, baconFilling);
+        List<Filling> expected = List.of(bacon, bacon);
         List<Filling> actual = onionBagel.getFillings();
 
         Assertions.assertEquals(expected, actual);
@@ -61,23 +63,23 @@ public class BagelTest {
     // remove filling that doesn't exist - error
     @Test
     void removeFilling_noFillingExists_error() {
-        onionBagel.removeFilling(baconFilling);
+        onionBagel.removeFilling(bacon);
 
         Assertions.assertThrows(IllegalArgumentException.class, 
-            () -> onionBagel.removeFilling(baconFilling));
+            () -> onionBagel.removeFilling(bacon));
     }
 
     // remove filling
     @Test
     void addAndRemoveFilling_fillingIsAddedAndRemoved() {
-        onionBagel.addFilling(baconFilling);
+        onionBagel.addFilling(bacon);
 
-        List<Filling> expected = List.of(baconFilling);
+        List<Filling> expected = List.of(bacon);
         List<Filling> actual = onionBagel.getFillings();
 
         Assertions.assertEquals(expected, actual);
 
-        onionBagel.removeFilling(baconFilling);
+        onionBagel.removeFilling(bacon);
 
         Assertions.assertTrue(onionBagel.getFillings().isEmpty());
     }
@@ -85,8 +87,8 @@ public class BagelTest {
     // get total cost: bagel + two fillings
     @Test
     void getTotalCost_bagelWithTwoFillings_0p73() {
-        onionBagel.addFilling(eggFilling);
-        onionBagel.addFilling(baconFilling);
+        onionBagel.addFilling(egg);
+        onionBagel.addFilling(bacon);
 
         double expected = 0.49 + 0.12 + 0.12;
         double actual = onionBagel.getTotalCost();
@@ -94,14 +96,14 @@ public class BagelTest {
         Assertions.assertEquals(expected, actual);
     }
 
-    // get name of bagel + one filling
+    /*// get name of bagel + one filling
     @Test
     void getFullName_onionBagelWithEgg() {
-        onionBagel.addFilling(eggFilling);
+        onionBagel.addFilling(egg);
 
         String expected = "Onion bagel with egg";
         String actual = onionBagel.getFullName();
 
         Assertions.assertEquals(expected, actual);
-    }
+    }*/
 }

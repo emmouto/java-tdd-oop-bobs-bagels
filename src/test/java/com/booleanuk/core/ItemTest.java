@@ -4,14 +4,16 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
 public class ItemTest {
+    Inventory bobsInventory;
     Bagel onionBagel;
-    Filling eggFilling;
+    Filling egg;
 
     ItemTest() {
-        //onionBagel = new Bagel("BGLO", 0.49, "Onion");
-        //eggFilling = new Filling("FILE", 0.12, "Egg");
-        onionBagel = new Bagel("BGLO");
-        eggFilling = new Filling("FILE");
+        onionBagel = new Bagel("BGLO", 0.49, "Onion");
+        egg = new Filling("FILE", 0.12, "Egg");
+        bobsInventory = new Inventory();
+        //onionBagel = new Bagel("BGLO");
+        //egg = new Filling("FILE");
     }
 
     /*@Test
@@ -33,7 +35,7 @@ public class ItemTest {
     // get price of filling
     @Test
     void getPrice_filling_0p12() {
-        Assertions.assertEquals(0.12, eggFilling.getPrice());
+        Assertions.assertEquals(0.12, egg.getPrice());
     }
 
     // get name of bagel
@@ -45,6 +47,6 @@ public class ItemTest {
     // get variant name
     @Test
     void getVariant_bagel_onion() {
-        Assertions.assertEquals("Onion", onionBagel.getName());
+        Assertions.assertEquals("Onion", onionBagel.getVariant());
     }
 }
