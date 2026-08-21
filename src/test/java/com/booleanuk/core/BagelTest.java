@@ -62,7 +62,7 @@ public class BagelTest {
 
     // remove filling that doesn't exist - error
     @Test
-    void removeFilling_noFillingExists_error() {
+    void removeFilling_noFillingExists_IllegalArgumentException() {
         onionBagel.removeFilling(bacon);
 
         Assertions.assertThrows(IllegalArgumentException.class, 

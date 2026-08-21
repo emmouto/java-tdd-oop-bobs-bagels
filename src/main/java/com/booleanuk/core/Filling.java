@@ -6,6 +6,6 @@ public class Filling extends Item {
     }
 
     public Filling(String SKU) {
-        this(SKU, 1, "test"); // TODO
+        this(SKU, 0.12, "test"); // TODO
     }
 }

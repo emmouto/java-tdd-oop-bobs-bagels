@@ -36,10 +36,10 @@ public class BasketTest {
 
     // change capacity - customer - failure
     @Test
-    void changeCapacity_ifUserIsCustomer_success() {
+    void changeCapacity_ifUserIsCustomer_IllegalArgumentException() {
         Assertions.assertThrows(IllegalArgumentException.class,
             () -> basket.changeCapacity(5, Role.CUSTOMER)
-        ); // TODO role management
+        ); // TODO proper role management
     }
 
     // add item that doesn't exist in inventory - failure
@@ -118,7 +118,7 @@ public class BasketTest {
         onionBagel.addFilling(bacon);
 
         double expected = 0.49 + 0.39 + 0.12 + 0.12;
-        double actual = basket.getTotalCost();
+        double actual = basket.getTotalCost(); // TODO why is this passing, it shouldn't
 
         Assertions.assertEquals(expected, actual);
     }

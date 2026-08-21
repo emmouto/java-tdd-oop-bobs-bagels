@@ -53,6 +53,7 @@ class Item  {
 	+ getSKU() String
 	+ getPrice() int
 	+ getName() String
+	+ getVariant() String
 }
 
 class Bagel {
@@ -62,12 +63,17 @@ class Bagel {
 }
 
 class Filling {
-	
+	+ Filling()
+}
+
+class Coffee {
+	+ Coffee()
 }
 
 class Inventory {
-	- Map~String, int~ skus
+	- Map~String, Item~ stock
 	+ isAvailable(String SKU) boolean
+	+ getStockItem(String SKU) Item
 }
 
 class Role {
@@ -80,5 +86,30 @@ Basket o-- Item : aggregation
 Bagel o-- Filling : aggregation
 Inventory o-- Item : aggregation
 Bagel <|-- Item : inheritance
+Filling <|-- Item : inheritance
+Coffee <|-- Item : inheritance
 ```
 
+# Extensions
+## Extension 1: Discounts
+### User Stories
+```
+1.
+As a customer,
+To save some money on my breakfast,
+I'd like to be able to buy a Coffee & Bagel combo deal.
+```
+
+```
+2.
+As a customer,
+With an extreme love for bagels,
+I'd love to get a discount when I buy a whole lot of bagels at the same time.
+```
+
+```
+3.
+As a manager,
+Who loves to make money,
+Fillings still cost the extra amount per bagel.
+```
