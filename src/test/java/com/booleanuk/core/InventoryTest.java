@@ -10,8 +10,15 @@ public class InventoryTest {
         bobsInventory = new Inventory(); // all skus should be added to inventory at construction
     }
 
+    // SKU for Everything Bagel ("BGLE") should be in the inventory list
     @Test
-    public void isAvailable_skus_BGLE() {
+    public void isAvailable_skuBGLE_true() {
         Assertions.assertTrue(bobsInventory.isAvailable("BGLE"));
+    }
+
+    // SKU BGLX should not exist
+    @Test
+    void isAvailable_skuBGLX_false() {
+        Assertions.assertFalse(bobsInventory.isAvailable("BGLX"));
     }
 }
