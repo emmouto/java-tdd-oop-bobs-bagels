@@ -7,6 +7,6 @@ public class Coffee extends Item {
 
     @Override
     public Coffee createCopy() {
-        return new Coffee(getSKU(), getPrice(), getVariant());
+        return new Coffee(getSKU(), getBasePrice(), getVariant());
     }
 }

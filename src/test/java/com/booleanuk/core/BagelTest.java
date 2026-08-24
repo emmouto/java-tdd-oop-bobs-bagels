@@ -2,24 +2,18 @@ package com.booleanuk.core;
 
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
-
-import com.booleanuk.core.inventory.Inventory;
 import com.booleanuk.core.model.Bagel;
 import com.booleanuk.core.model.Filling;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
 public class BagelTest {
-    Inventory bobsInventory;
     Bagel onionBagel;
     Filling egg;
     Filling bacon;
 
     BagelTest() {
-        //onionBagel = new Bagel("BGLO", 0.49, "Onion");
-        //eggFilling = new Filling("FILE", 0.12, "Egg");
-        bobsInventory = new Inventory();
         onionBagel = new Bagel("BGLO", 0.49, "Onion");
         egg = new Filling("FILE", 0.12, "Egg");
         bacon = new Filling("FILB", 0.12, "Bacon");
@@ -68,8 +62,6 @@ public class BagelTest {
     // remove filling that doesn't exist - error
     @Test
     void removeFilling_noFillingExists_IllegalArgumentException() {
-        onionBagel.removeFilling(bacon);
-
         Assertions.assertThrows(IllegalArgumentException.class, 
             () -> onionBagel.removeFilling(bacon));
     }
@@ -96,19 +88,8 @@ public class BagelTest {
         onionBagel.addFilling(bacon);
 
         double expected = 0.49 + 0.12 + 0.12;
-        double actual = onionBagel.getTotalCost();
+        double actual = onionBagel.getTotalPrice();
 
         Assertions.assertEquals(expected, actual);
     }
-
-    /*// get name of bagel + one filling
-    @Test
-    void getFullName_onionBagelWithEgg() {
-        onionBagel.addFilling(egg);
-
-        String expected = "Onion bagel with egg";
-        String actual = onionBagel.getFullName();
-
-        Assertions.assertEquals(expected, actual);
-    }*/
 }

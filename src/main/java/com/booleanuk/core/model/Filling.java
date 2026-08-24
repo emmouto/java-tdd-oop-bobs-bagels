@@ -7,6 +7,6 @@ public class Filling extends Item {
 
     @Override
     public Filling createCopy() {
-        return new Filling(getSKU(), getPrice(), getVariant());
+        return new Filling(getSKU(), getBasePrice(), getVariant());
     }
 }

@@ -2,8 +2,6 @@ package com.booleanuk.core;
 
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
-
 import com.booleanuk.core.inventory.Inventory;
 import com.booleanuk.core.model.Bagel;
 import com.booleanuk.core.model.Basket;
@@ -11,11 +9,12 @@ import com.booleanuk.core.model.Filling;
 import com.booleanuk.core.model.Item;
 import com.booleanuk.core.model.Role;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
 public class BasketTest {
-    Inventory bobsInventory;
     Basket basket;
+    Inventory inventory;
     Bagel onionBagel;
     Bagel plainBagel;
     Bagel everythingBagel;
@@ -24,14 +23,23 @@ public class BasketTest {
     Filling bacon;
 
     BasketTest() {
-        bobsInventory = new Inventory();
-        basket = new Basket(3);
-        onionBagel = new Bagel("BGLO");
-        plainBagel = new Bagel("BGLP");
-        everythingBagel = new Bagel("BGLE");
-        sesameBagel = new Bagel("BGLS");
-        egg = new Filling("FILE");
-        bacon = new Filling("FILB");
+        inventory = new Inventory();
+
+        onionBagel = new Bagel("BGLO", 0.49, "Onion");
+        plainBagel = new Bagel("BGLP", 0.39, "Plain");
+        everythingBagel = new Bagel("BGLE", 0.49, "Everything");
+        sesameBagel = new Bagel("BGLS", 0.49, "Sesame");
+        egg = new Filling("FILE", 0.12, "Egg");
+        bacon = new Filling("FILB", 0.12, "Bacon");
+
+        inventory.addItemToInventory(onionBagel);
+        inventory.addItemToInventory(plainBagel);
+        inventory.addItemToInventory(everythingBagel);
+        inventory.addItemToInventory(sesameBagel);
+        inventory.addItemToInventory(egg);
+        inventory.addItemToInventory(bacon);
+
+        basket = new Basket(3, inventory);
     }
 
     // change capacity - manager - success
@@ -54,7 +62,7 @@ public class BasketTest {
     @Test
     void add_itemThatDoesntExistInInventory_cannotAdd() {
         Assertions.assertThrows(IllegalArgumentException.class,
-            () -> basket.add(new Bagel("BGLX"))
+            () -> basket.add(new Bagel("BGLX", 3.99, "Special"))
         );
     }
 
@@ -126,7 +134,7 @@ public class BasketTest {
         onionBagel.addFilling(bacon);
 
         double expected = 0.49 + 0.39 + 0.12 + 0.12;
-        double actual = basket.getTotalCost(); // TODO why is this passing, it shouldn't
+        double actual = basket.getTotalPrice(); 
 
         Assertions.assertEquals(expected, actual);
     }

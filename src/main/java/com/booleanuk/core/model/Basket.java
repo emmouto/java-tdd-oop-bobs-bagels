@@ -7,13 +7,13 @@ import com.booleanuk.core.inventory.Inventory;
 
 public class Basket {
     int capacity;
+    Inventory inventory;
     List<Item> contents;
-    Inventory bobsInventory;
-
-    public Basket(int capacity) {
+    
+    public Basket(int capacity, Inventory inventory) {
         this.capacity = capacity;
+        this.inventory = inventory;
         contents = new ArrayList<>();
-        bobsInventory = new Inventory();
     }
 
     public void changeCapacity(int newCapacity, Role role) {
@@ -29,10 +29,13 @@ public class Basket {
     }
 
     public void add(Item item) {
+        if (!inventory.hasItem(item.getSKU()))
+            throw new IllegalArgumentException("Item not in stock.");
+
         if (!isFull()) {
-        contents.add(item);
+            contents.add(item);
         } else {
-        throw new IllegalStateException("Basket is full!");
+            throw new IllegalStateException("Basket is full!");
         }
     }
 
@@ -46,16 +49,16 @@ public class Basket {
 
     public void remove(Bagel bagel) {
         if (!contents.remove(bagel))
-            throw new IllegalArgumentException("Cannot remove an item that is not in the basket.");
+            throw new IllegalArgumentException(
+                "Cannot remove an item that is not in the basket.");
     }
 
-    public double getTotalCost() {
+    public double getTotalPrice() {
         double totalCost = 0;
 
         for (Item i : contents) 
-            totalCost += i.getPrice();
+            totalCost += i.getTotalPrice();
 
         return totalCost;
     }
-
 }

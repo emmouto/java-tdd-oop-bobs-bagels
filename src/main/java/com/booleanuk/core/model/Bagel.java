@@ -20,20 +20,22 @@ public class Bagel extends Item {
     }
 
     public void removeFilling(Filling filling) {
-        fillings.remove(filling);
+        if (!fillings.remove(filling))
+            throw new IllegalArgumentException("There is no " + filling.getVariant() + " in this bagel.");
     }
 
-    public double getTotalCost() {
-        double totalCost = getPrice();
+    @Override
+    public double getTotalPrice() {
+        double totalPrice = getBasePrice();
 
         for (Filling f : fillings)
-            totalCost += f.getPrice();
+            totalPrice += f.getBasePrice();
 
-        return totalCost;
+        return totalPrice;
     }
 
     @Override
     public Bagel createCopy() {
-        return new Bagel(getSKU(), getPrice(), getVariant());
+        return new Bagel(getSKU(), getBasePrice(), getVariant());
     }
 }

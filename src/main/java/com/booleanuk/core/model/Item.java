@@ -2,13 +2,15 @@ package com.booleanuk.core.model;
 
 public abstract class Item {
     private String SKU;
-    private double price;
+    private double basePrice;
+    private double totalPrice;
     private String name;
     private String variant;
 
     public Item(String SKU, double price, String name, String variant) {
         this.SKU = SKU;
-        this.price = price;
+        this.basePrice = price;
+        this.totalPrice = price;
         this.name = name;
         this.variant = variant;
     }
@@ -19,8 +21,12 @@ public abstract class Item {
         return this.SKU;
     }
 
-    public double getPrice() {
-        return this.price;
+    public double getBasePrice() {
+        return this.basePrice;
+    }
+
+    public double getTotalPrice() {
+        return this.getTotalPrice();
     }
 
     public String getName() {

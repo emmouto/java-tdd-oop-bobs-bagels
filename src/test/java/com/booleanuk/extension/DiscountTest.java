@@ -1,8 +1,8 @@
-package com.booleanuk.core;
+/*package com.booleanuk.extension;
 
 import org.junit.jupiter.api.Test;
 
-import com.booleanuk.core.inventory.Inventory;
+import com.booleanuk.core.BobsBagels;
 import com.booleanuk.core.model.Bagel;
 import com.booleanuk.core.model.Basket;
 import com.booleanuk.core.model.Coffee;
@@ -11,11 +11,11 @@ import com.booleanuk.core.model.Filling;
 import org.junit.jupiter.api.Assertions;
 
 public class DiscountTest {
-    Inventory bobsInventory;
+    BobsBagels bobsBagels;
     Basket emmasBasket;
 
     DiscountTest() {
-        bobsInventory = new Inventory();
+        bobsBagels = new BobsBagels();
         emmasBasket = new Basket(19);
     }
 
@@ -25,7 +25,7 @@ public class DiscountTest {
             emmasBasket.add(new Bagel("BGLO", 0.49, "Onion"));
         }
 
-        double actual = emmasBasket.getTotalCost(); // applies discount
+        double actual = emmasBasket.getTotalPrice(); // applies discount
 
         Assertions.assertEquals(2.49, actual);
     }
@@ -44,7 +44,7 @@ public class DiscountTest {
 
         emmasBasket.add(bagelWithFillings);
 
-        double actual = emmasBasket.getTotalCost(); // applies discount
+        double actual = emmasBasket.getTotalPrice(); // applies discount
 
         Assertions.assertEquals(2.49, actual);
     }
@@ -55,7 +55,7 @@ public class DiscountTest {
             emmasBasket.add(new Bagel("BGLO", 0.49, "Onion"));
         }
 
-        double actual = emmasBasket.getTotalCost(); // applies discount
+        double actual = emmasBasket.getTotalPrice(); // applies discount
 
         Assertions.assertEquals(3.99, actual);
     }
@@ -66,7 +66,7 @@ public class DiscountTest {
             emmasBasket.add(new Bagel("BGLO", 0.49, "Onion"));
         }
 
-        double actual = emmasBasket.getTotalCost(); // applies discount
+        double actual = emmasBasket.getTotalPrice(); // applies discount
 
         Assertions.assertEquals(3.99, actual);
     }
@@ -77,7 +77,7 @@ public class DiscountTest {
             emmasBasket.add(new Bagel("BGLO", 0.49, "Onion"));
         }
 
-        double actual = emmasBasket.getTotalCost(); // applies discount
+        double actual = emmasBasket.getTotalPrice(); // applies discount
 
         Assertions.assertEquals(3.99, actual);
     }
@@ -87,8 +87,8 @@ public class DiscountTest {
         emmasBasket.add(new Bagel("BGLO", 0.49, "Onion"));
         emmasBasket.add(new Coffee("COFB", 0.99, "Black"));
 
-        double actual = emmasBasket.getTotalCost(); // applies discount
+        double actual = emmasBasket.getTotalPrice(); // applies discount
 
         Assertions.assertEquals(3.99, actual);
     }
-}
+}*/

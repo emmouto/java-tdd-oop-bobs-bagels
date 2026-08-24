@@ -1,4 +1,4 @@
-package com.booleanuk.core.discount;
+package com.booleanuk.extension.discount;
 
 import com.booleanuk.core.model.Basket;
 
