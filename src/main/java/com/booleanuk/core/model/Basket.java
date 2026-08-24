@@ -6,9 +6,9 @@ import java.util.List;
 import com.booleanuk.core.inventory.Stock;
 
 public class Basket {
-    int capacity;
-    Stock stock;
-    List<Item> contents;
+    private int capacity;
+    private Stock stock;
+    private List<Item> contents;
     
     public Basket(int capacity, Stock stock) {
         this.capacity = capacity;
@@ -24,7 +24,7 @@ public class Basket {
         }
     }
 
-    public Integer getCapacity() {
+    public int getCapacity() {
         return capacity;
     }
 
@@ -37,6 +37,12 @@ public class Basket {
         } else {
             throw new IllegalStateException("Basket is full!");
         }
+    }    
+    
+    public void remove(Bagel bagel) {
+        if (!contents.remove(bagel))
+            throw new IllegalArgumentException(
+                "Cannot remove an item that is not in the basket.");
     }
 
     public List<Item> getContents() {
@@ -45,12 +51,6 @@ public class Basket {
 
     public boolean isFull() {
         return contents.size() >= capacity;
-    }
-
-    public void remove(Bagel bagel) {
-        if (!contents.remove(bagel))
-            throw new IllegalArgumentException(
-                "Cannot remove an item that is not in the basket.");
     }
 
     public double getTotalPrice() {

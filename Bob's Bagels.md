@@ -32,19 +32,18 @@
 ```mermaid
 classDiagram
 
-class BobsBagels {
-	- Inventory bobsInventory
-}
-
 class Basket {
 	- int capacity
+	- Stock stock
 	- List~Item~ contents
 	+ Basket()
+	+ changeCapacity() void
+	+ getCapacity() int
 	+ add(Item item) void
 	+ remove (Item item) void
+	+ getContents() List<Item>
 	+ getTotalCost() double
 	+ isFull() boolean
-	+ changeCapacity() void
 }
 
 class Item  {
@@ -61,6 +60,7 @@ class Item  {
 
 class Bagel {
 	- List~Filling~ fillings
+	- totalPrice
 	+ Bagel()
 	+ addFilling(Filling filling) void
 }
@@ -71,6 +71,11 @@ class Filling {
 
 class Coffee {
 	+ Coffee()
+}
+
+class Stock {
+	<<interface>>
+	+ hasItem() : boolean
 }
 
 class Inventory {
@@ -85,14 +90,15 @@ class Role {
 	MANAGER
 }
 
-BobsBagels *-- Inventory : composition
-BobsBagels o-- Basket : uses
-Basket o-- Item : aggregation
-Bagel o-- Filling : aggregation
-Inventory o-- Item : contains
-Bagel <|-- Item : inheritance
-Filling <|-- Item : inheritance
-Coffee <|-- Item : inheritance
+Stock <|.. Inventory : implements
+Basket --> Stock : depends on/uses
+Basket o-- Item : contains
+Inventory --> "0..*" Item : stores
+
+Item <|-- Bagel : inherits
+Item <|-- Filling : inherits
+Item <|-- Coffee : inherits
+Bagel o-- Filling : has
 ```
 
 # Extensions

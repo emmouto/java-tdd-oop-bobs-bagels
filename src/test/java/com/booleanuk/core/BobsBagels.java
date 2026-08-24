@@ -2,7 +2,6 @@ package com.booleanuk.core;
 
 import com.booleanuk.core.inventory.Inventory;
 import com.booleanuk.core.model.Bagel;
-import com.booleanuk.core.model.Basket;
 import com.booleanuk.core.model.Coffee;
 import com.booleanuk.core.model.Filling;
 
@@ -29,22 +28,4 @@ public class BobsBagels {
         bobsInventory.addItemToInventory(new Filling("FILS", 0.12, "Smoked Salmon"));
         bobsInventory.addItemToInventory(new Filling("FILH", 0.12, "Ham"));
     }
-
-    /* 
-    public void addItemToBasket(String SKU, Basket basket) {
-        if (bobsInventory.hasItem(SKU)) {
-            basket.add(bobsInventory.createItem(SKU));
-        } else {
-            throw new IllegalArgumentException("Bob's Bagels does not stock that item.");
-        }
-    }
-
-    public void addFillingToBagel(String SKU, Bagel bagel) {
-        if (bobsInventory.hasItem(SKU)) {
-            bagel.addFilling(bobsInventory.createFilling(SKU));
-        } else {
-            throw new IllegalArgumentException("Bob's Bagels does not stock that item.");
-        }
-    }
-    */
 }
