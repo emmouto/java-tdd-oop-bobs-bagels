@@ -1,5 +1,6 @@
 package com.booleanuk.core.inventory;
 
+@FunctionalInterface
 public interface Stock {
-    boolean hasItem(String sku);
+    public boolean hasItem(String sku);
 }

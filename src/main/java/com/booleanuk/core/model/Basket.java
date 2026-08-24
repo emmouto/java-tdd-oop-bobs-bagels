@@ -3,16 +3,16 @@ package com.booleanuk.core.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.booleanuk.core.inventory.Inventory;
+import com.booleanuk.core.inventory.Stock;
 
 public class Basket {
     int capacity;
-    Inventory inventory;
+    Stock stock;
     List<Item> contents;
     
-    public Basket(int capacity, Inventory inventory) {
+    public Basket(int capacity, Stock stock) {
         this.capacity = capacity;
-        this.inventory = inventory;
+        this.stock = stock;
         contents = new ArrayList<>();
     }
 
@@ -29,7 +29,7 @@ public class Basket {
     }
 
     public void add(Item item) {
-        if (!inventory.hasItem(item.getSKU()))
+        if (!stock.hasItem(item.getSKU()))
             throw new IllegalArgumentException("Item not in stock.");
 
         if (!isFull()) {
