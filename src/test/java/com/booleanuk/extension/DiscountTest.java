@@ -1,31 +1,38 @@
-/*package com.booleanuk.extension;
+package com.booleanuk.extension;
 
 import org.junit.jupiter.api.Test;
 
-import com.booleanuk.core.BobsBagels;
+import com.booleanuk.core.inventory.Inventory;
 import com.booleanuk.core.model.Bagel;
 import com.booleanuk.core.model.Basket;
 import com.booleanuk.core.model.Coffee;
 import com.booleanuk.core.model.Filling;
+import com.booleanuk.extension.discount.PriceCalculator;
 
 import org.junit.jupiter.api.Assertions;
 
 public class DiscountTest {
-    BobsBagels bobsBagels;
-    Basket emmasBasket;
+    Basket basket;
+    Inventory bobsInventory;
 
     DiscountTest() {
-        bobsBagels = new BobsBagels();
-        emmasBasket = new Basket(19);
+        bobsInventory = new Inventory();
+
+        bobsInventory.addProductToInventory(new Bagel("BGLO", 0.49, "Onion"));
+        bobsInventory.addProductToInventory(new Coffee("COFB", 0.99, "Black"));
+        bobsInventory.addProductToInventory(new Filling("FILC", 0.12, "Cheese"));
+
+        basket = new Basket(19, bobsInventory);
     }
 
     @Test
     void applyMultiPriceDiscount_6BagelsFor2p49() {
         for (int i = 0; i < 6; i++) {
-            emmasBasket.add(new Bagel("BGLO", 0.49, "Onion"));
+            basket.add(new Bagel("BGLO", 0.49, "Onion"));
         }
 
-        double actual = emmasBasket.getTotalPrice(); // applies discount
+        PriceCalculator priceCalculator = new PriceCalculator();
+        double actual = priceCalculator.calculate(basket);
 
         Assertions.assertEquals(2.49, actual);
     }
@@ -33,7 +40,7 @@ public class DiscountTest {
     @Test
     void applyMultiPriceDiscount_6BagelsFor2p49Plus3FillingsAtNormalPrice() {
         for (int i = 0; i < 5; i++) {
-            emmasBasket.add(new Bagel("BGLO", 0.49, "Onion"));
+            basket.add(new Bagel("BGLO", 0.49, "Onion"));
         }
 
         Bagel bagelWithFillings = new Bagel("BGLO", 0.49, "Everything");
@@ -42,20 +49,21 @@ public class DiscountTest {
             bagelWithFillings.addFilling(new Filling("FILC", 0.12, "Cheese"));
         }
 
-        emmasBasket.add(bagelWithFillings);
+        basket.add(bagelWithFillings);
 
-        double actual = emmasBasket.getTotalPrice(); // applies discount
+        PriceCalculator priceCalculator = new PriceCalculator();
+        double actual = priceCalculator.calculate(basket);
 
-        Assertions.assertEquals(2.49, actual);
+        Assertions.assertEquals(2.85, actual);
     }
 
     @Test
     void applyMultiPriceDiscount_12BagelsFor3p99() {
         for (int i = 0; i < 12; i++) {
-            emmasBasket.add(new Bagel("BGLO", 0.49, "Onion"));
+            basket.add(new Bagel("BGLO", 0.49, "Onion"));
         }
 
-        double actual = emmasBasket.getTotalPrice(); // applies discount
+        double actual = basket.getTotalPrice(); // applies discount
 
         Assertions.assertEquals(3.99, actual);
     }
@@ -63,32 +71,32 @@ public class DiscountTest {
     @Test
     void applyMultiPriceDiscount_7BagelsAppliesDiscountFor6AndOneHasNormalPrice() {
         for (int i = 0; i < 7; i++) {
-            emmasBasket.add(new Bagel("BGLO", 0.49, "Onion"));
+            basket.add(new Bagel("BGLO", 0.49, "Onion"));
         }
 
-        double actual = emmasBasket.getTotalPrice(); // applies discount
+        double actual = basket.getTotalPrice(); // applies discount
 
-        Assertions.assertEquals(3.99, actual);
+        Assertions.assertEquals(4.48, actual);
     }
 
     @Test
     void applyMultiPriceDiscount_18BagelsRequiresTwoSpecialOffersCombined() {
         for (int i = 0; i < 18; i++) {
-            emmasBasket.add(new Bagel("BGLO", 0.49, "Onion"));
+            basket.add(new Bagel("BGLO", 0.49, "Onion"));
         }
 
-        double actual = emmasBasket.getTotalPrice(); // applies discount
+        double actual = basket.getTotalPrice(); // applies discount
 
-        Assertions.assertEquals(3.99, actual);
+        Assertions.assertEquals(6.48, actual);
     }
 
     @Test
     void applyComboDeal_coffeeAndBagelFor1p25() {
-        emmasBasket.add(new Bagel("BGLO", 0.49, "Onion"));
-        emmasBasket.add(new Coffee("COFB", 0.99, "Black"));
+        basket.add(new Bagel("BGLO", 0.49, "Onion"));
+        basket.add(new Coffee("COFB", 0.99, "Black"));
 
-        double actual = emmasBasket.getTotalPrice(); // applies discount
+        double actual = basket.getTotalPrice(); // applies discount
 
-        Assertions.assertEquals(3.99, actual);
+        Assertions.assertEquals(1.25, actual);
     }
-}*/
+}

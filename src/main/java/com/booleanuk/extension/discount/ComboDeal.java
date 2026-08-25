@@ -1,13 +1,23 @@
 package com.booleanuk.extension.discount;
 
+import java.util.List;
+import java.util.Optional;
+
 import com.booleanuk.core.model.Basket;
+import com.booleanuk.core.model.Item;
 
 public class ComboDeal implements Discount {
-    public double calculateDiscount(Basket basket) {
-        double discountedBasket = 0;
+    List<Class<? extends Item>> items; // could potentially be a map? if the need for smth like "2 bagels + 1 coffe for 2.00" arises
+    double price;
 
-        // TODO implement
+    public ComboDeal(List<Class<? extends Item>> items, double price) {
+        this.items = items;
+        this.price = price;
+    }
 
-        return discountedBasket;
+    public Optional<DiscountResult> apply(Basket basket) {
+        // TODO
+
+        return Optional.empty();
     }
 }

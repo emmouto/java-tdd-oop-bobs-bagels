@@ -32,12 +32,12 @@ public class BasketTest {
         egg = new Filling("FILE", 0.12, "Egg");
         bacon = new Filling("FILB", 0.12, "Bacon");
 
-        inventory.addItemToInventory(onionBagel);
-        inventory.addItemToInventory(plainBagel);
-        inventory.addItemToInventory(everythingBagel);
-        inventory.addItemToInventory(sesameBagel);
-        inventory.addItemToInventory(egg);
-        inventory.addItemToInventory(bacon);
+        inventory.addProductToInventory(onionBagel);
+        inventory.addProductToInventory(plainBagel);
+        inventory.addProductToInventory(everythingBagel);
+        inventory.addProductToInventory(sesameBagel);
+        inventory.addProductToInventory(egg);
+        inventory.addProductToInventory(bacon);
 
         basket = new Basket(3, inventory);
     }

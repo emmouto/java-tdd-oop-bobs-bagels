@@ -6,6 +6,11 @@ public class Coffee extends Item {
     }
 
     @Override
+    public double getTotalPrice() {
+        return getBasePrice(); // coffee currently doesn't have any addons
+    }
+
+    @Override
     public Coffee createCopy() {
         return new Coffee(getSKU(), getBasePrice(), getVariant());
     }

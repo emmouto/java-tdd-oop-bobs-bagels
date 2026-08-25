@@ -90,6 +90,8 @@ class Role {
 	MANAGER
 }
 
+
+
 Stock <|.. Inventory : implements
 Basket --> Stock : depends on/uses
 Basket o-- Item : contains
@@ -123,4 +125,11 @@ I'd love to get a discount when I buy a whole lot of bagels at the same time.
 As a manager,
 Who loves to make money,
 Fillings still cost the extra amount per bagel.
+```
+
+```
+4.
+As a customer, 
+Who of course likes big discounts,
+I would like the discount applied to be the greatest possible.
 ```

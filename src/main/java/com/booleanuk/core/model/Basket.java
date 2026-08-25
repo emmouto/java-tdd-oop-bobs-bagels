@@ -16,6 +16,13 @@ public class Basket {
         contents = new ArrayList<>();
     }
 
+    // for creating a Basket with items already in it (for the PriceCalculator)
+    public Basket(int capacity, Stock stock, List<Item> contents) {
+        this.capacity = capacity;
+        this.stock = stock;
+        this.contents = contents;
+    }
+
     public void changeCapacity(int newCapacity, Role role) {
         if (role == Role.MANAGER) {
             this.capacity = newCapacity;
@@ -29,7 +36,7 @@ public class Basket {
     }
 
     public void add(Item item) {
-        if (!stock.hasItem(item.getSKU()))
+        if (!stock.hasProduct(item.getSKU()))
             throw new IllegalArgumentException("Item not in stock.");
 
         if (!isFull()) {
@@ -60,5 +67,9 @@ public class Basket {
             totalCost += i.getTotalPrice();
 
         return totalCost;
+    }
+
+    public Stock getStock() {
+        return this.stock;
     }
 }

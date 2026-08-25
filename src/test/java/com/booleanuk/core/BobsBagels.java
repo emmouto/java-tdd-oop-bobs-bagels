@@ -11,21 +11,21 @@ public class BobsBagels {
     public BobsBagels() {
         bobsInventory = new Inventory();
 
-        bobsInventory.addItemToInventory(new Bagel("BGLO", 0.49, "Onion"));
-        bobsInventory.addItemToInventory(new Bagel("BGLP", 0.39, "Plain"));
-        bobsInventory.addItemToInventory(new Bagel("BGLE", 0.49, "Everything"));
-        bobsInventory.addItemToInventory(new Bagel("BGLS", 0.49, "Sesame"));
+        bobsInventory.addProductToInventory(new Bagel("BGLO", 0.49, "Onion"));
+        bobsInventory.addProductToInventory(new Bagel("BGLP", 0.39, "Plain"));
+        bobsInventory.addProductToInventory(new Bagel("BGLE", 0.49, "Everything"));
+        bobsInventory.addProductToInventory(new Bagel("BGLS", 0.49, "Sesame"));
 
-        bobsInventory.addItemToInventory(new Coffee("COFB", 0.99, "Black"));
-        bobsInventory.addItemToInventory(new Coffee("COFW", 1.19, "White"));
-        bobsInventory.addItemToInventory(new Coffee("COFC", 1.29, "Capuccino"));
-        bobsInventory.addItemToInventory(new Coffee("COFL", 1.29, "Latte"));
+        bobsInventory.addProductToInventory(new Coffee("COFB", 0.99, "Black"));
+        bobsInventory.addProductToInventory(new Coffee("COFW", 1.19, "White"));
+        bobsInventory.addProductToInventory(new Coffee("COFC", 1.29, "Capuccino"));
+        bobsInventory.addProductToInventory(new Coffee("COFL", 1.29, "Latte"));
 
-        bobsInventory.addItemToInventory(new Filling("FILB", 0.12, "Bacon"));
-        bobsInventory.addItemToInventory(new Filling("FILE", 0.12, "Egg"));
-        bobsInventory.addItemToInventory(new Filling("FILC", 0.12, "Cheese"));
-        bobsInventory.addItemToInventory(new Filling("FILX", 0.12, "Cream Cheese"));
-        bobsInventory.addItemToInventory(new Filling("FILS", 0.12, "Smoked Salmon"));
-        bobsInventory.addItemToInventory(new Filling("FILH", 0.12, "Ham"));
+        bobsInventory.addProductToInventory(new Filling("FILB", 0.12, "Bacon"));
+        bobsInventory.addProductToInventory(new Filling("FILE", 0.12, "Egg"));
+        bobsInventory.addProductToInventory(new Filling("FILC", 0.12, "Cheese"));
+        bobsInventory.addProductToInventory(new Filling("FILX", 0.12, "Cream Cheese"));
+        bobsInventory.addProductToInventory(new Filling("FILS", 0.12, "Smoked Salmon"));
+        bobsInventory.addProductToInventory(new Filling("FILH", 0.12, "Ham"));
     }
 }
